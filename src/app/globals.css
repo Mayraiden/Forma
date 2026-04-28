@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+	/* --- Backgrounds & Surfaces --- */
+	--color-bg-app: #f1f3f0; /* Основной фон страницы */
+	--color-bg-card: #ffffff; /* Белые карточки */
+	--color-bg-sidebar: #ffffff; /* Сайдбар */
+	--color-bg-pill: #dce3ed; /* Чуть плотнее: «инвентарь» не сливается со стеклом */
+
+	/* --- Brand & Status Colors --- */
+	--color-primary: #22c55e; /* Ярче: успех / XP-бар */
+	--color-primary-soft: #dcfce7;
+
+	/* Главные действия (как на референсе): высокий контраст на светлом фоне */
+	--color-cta: #0a0f1a;
+	--color-cta-hover: #1e293b;
+
+	--color-accent-orange: #ea580c; /* Огонь / стрик — плотнее */
+	--color-accent-orange-soft: #ffedd5;
+
+	--color-accent-purple: #7c3aed; /* Power-ups */
+	--color-accent-purple-soft: #ede9fe;
+
+	/* Доп. гейм-слой: награды, «лут», вторичные шкалы */
+	--color-xp-gold: #ca8a04;
+	--color-xp-gold-soft: #fef9c3;
+
+	--color-accent-teal: #0d9488;
+	--color-accent-teal-soft: #ccfbf1;
+
+	/* --- Text & Content --- */
+	--color-text-main: #0f172a; /* Глубокий темный для заголовков */
+	--color-text-secondary: #475569; /* Чуть плотнее для читаемости на белом */
+	--color-text-muted: #64748b; /* Было «слишком блекло» рядом с фоном приложения */
+
+	/* --- Borders & Decorative --- */
+	--color-stroke: #c8d1dc; /* Карточка отделяется от #f1f3f0 заметнее */
+	--color-stroke-light: #dfe6ee; /* Внутренние разделители — видны, но мягче внешней обводки */
+
+	/* Двухслойная тень: «лифт» карточки над фиксированным bg-app */
+	--shadow-card:
+		0 1px 2px rgba(15, 23, 42, 0.07), 0 12px 32px -8px rgba(15, 23, 42, 0.14);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
