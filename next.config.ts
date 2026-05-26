@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+	experimental: {
+		// Без этого Turbopack в dev тянет тысячи иконок из barrel-экспорта
+		optimizePackageImports: ['@phosphor-icons/react'],
+	},
+}
 
-export default nextConfig;
+export default nextConfig

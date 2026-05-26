@@ -4,15 +4,14 @@
 	--font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
 
 	/* --- Backgrounds & Surfaces --- */
-	--color-bg-app: #f1f3f0; /* Основной фон страницы */
+	--color-bg-app: #ecf0f1; /* Основной фон страницы */
 	--color-bg-card: #ffffff; /* Белые карточки */
-	--color-bg-sidebar: #ffffff; /* Сайдбар */
 	--color-bg-pill: #dce3ed; /* Чуть плотнее: «инвентарь» не сливается со стеклом */
 
 	/* --- Brand & Status Colors --- */
 	--color-primary: #22c55e; /* Ярче: успех / XP-бар */
 	--color-primary-soft: #dcfce7;
-
+	--color-black-coffe: #201412;
 	/* Главные действия (как на референсе): высокий контраст на светлом фоне */
 	--color-cta: #0a0f1a;
 	--color-cta-hover: #1e293b;

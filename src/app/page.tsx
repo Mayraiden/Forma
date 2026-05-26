@@ -1,5 +1,4 @@
-import { WelcomeCard } from './components/WelcomeCard'
-import { ProfileHeroCard } from './components/ProfileHeroCard'
+import { WelcomeCard } from '@/modules/dashboard/components/WelcomeCard'
 
 const shellStyles = 'flex h-full w-full flex-col bg-bg-app'
 const contentStyles =
@@ -13,7 +12,6 @@ export default function HomePage() {
 				<div className={welcomeWrapStyles}>
 					<WelcomeCard />
 				</div>
-				<ProfileHeroCard />
 			</div>
 		</main>
 	)
