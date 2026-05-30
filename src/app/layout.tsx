@@ -28,13 +28,13 @@ export const metadata: Metadata = {
 		icon: '/assets/icons/logo.svg',
 		apple: '/assets/icons/logo.svg',
 	},
-	themeColor: '#10b981',
 }
 
 export const viewport = {
 	width: 'device-width',
 	initialScale: 1,
 	viewportFit: 'cover',
+	themeColor: '#10b981',
 }
 
 type RootLayoutProps = {
