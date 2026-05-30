@@ -36,7 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				jetbrainsMono.variable,
 			)}
 		>
-			<body className="h-full overflow-hidden bg-bg-app font-sans text-text-main">
+			<body className="h-full overflow-hidden bg-bg-app/60 font-sans text-text-main">
 				{children}
 			</body>
 		</html>

@@ -1,8 +1,8 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+	allowedDevOrigins: ['192.168.0.21'],
 	experimental: {
-		// Без этого Turbopack в dev тянет тысячи иконок из barrel-экспорта
 		optimizePackageImports: ['@phosphor-icons/react'],
 	},
 }

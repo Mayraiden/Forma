@@ -3,44 +3,40 @@
 @theme {
 	--font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
 
-	/* --- Backgrounds & Surfaces --- */
-	--color-bg-app: #ecf0f1; /* Основной фон страницы */
-	--color-bg-card: #ffffff; /* Белые карточки */
-	--color-bg-pill: #dce3ed; /* Чуть плотнее: «инвентарь» не сливается со стеклом */
+	/* --- Backgrounds & Surfaces (Кофейный крем) --- */
+	--color-bg-app: #10b981; /* #fbf9f6 - Мягкий молочно-кремовый фон страницы */
+	--color-bg-card: #ffffff; /* Чистый белый — карточки будут изящно «парить» над кремовым фоном */
+	--color-bg-pill: #f3ece3; /* Плотный крем для элементов инвентаря и тегов */
 
-	/* --- Brand & Status Colors --- */
-	--color-primary: #22c55e; /* Ярче: успех / XP-бар */
-	--color-primary-soft: #dcfce7;
-	--color-black-coffe: #201412;
-	/* Главные действия (как на референсе): высокий контраст на светлом фоне */
-	--color-cta: #0a0f1a;
-	--color-cta-hover: #1e293b;
+	/* --- Brand & Status Colors (Кофе и сочные акценты) --- */
+	--color-primary: #10b981; /* Изумрудно-зеленый: успех / XP-бар */
+	--color-primary-soft: #e6f7f0; /* Мягкий зеленый подложки */
 
-	--color-accent-orange: #ea580c; /* Огонь / стрик — плотнее */
-	--color-accent-orange-soft: #ffedd5;
+	/* Главные действия: глубокий кофейный эспрессо для высокого контраста */
+	--color-accent-dark: #201412;
+	--color-accent-dark-hover: #382522;
 
-	--color-accent-purple: #7c3aed; /* Power-ups */
-	--color-accent-purple-soft: #ede9fe;
+	/* Стрик / Огонь: сочный мандариновый */
+	--color-accent-orange: #f97316;
+	--color-accent-orange-soft: #fff3eb;
 
-	/* Доп. гейм-слой: награды, «лут», вторичные шкалы */
-	--color-xp-gold: #ca8a04;
-	--color-xp-gold-soft: #fef9c3;
+	--color-accent-purple: #8b5cf6; /* Power-ups / Ачивки */
+	--color-accent-purple-soft: #f5f3ff;
 
-	--color-accent-teal: #0d9488;
-	--color-accent-teal-soft: #ccfbf1;
+	/* Доп. гейм-слой: золото для наград */
+	--color-xp-gold: #d97706;
+	--color-xp-gold-soft: #fef3c7;
 
-	/* --- Text & Content --- */
-	--color-text-main: #0f172a; /* Глубокий темный для заголовков */
-	--color-text-secondary: #475569; /* Чуть плотнее для читаемости на белом */
-	--color-text-muted: #64748b; /* Было «слишком блекло» рядом с фоном приложения */
+	/* --- Text & Content (Читаемый шоколад вместо мертвого черного) --- */
+	--color-text-main: #2c2220; /* Глубокий темно-коричневый для заголовков */
+	--color-text-secondary: #5c4d4a; /* Мягкий кофейный для обычного текста */
+	--color-text-muted: #8c7a76; /* Для второстепенных подписей */
 
 	/* --- Borders & Decorative --- */
-	--color-stroke: #c8d1dc; /* Карточка отделяется от #f1f3f0 заметнее */
-	--color-stroke-light: #dfe6ee; /* Внутренние разделители — видны, но мягче внешней обводки */
-
-	/* Двухслойная тень: «лифт» карточки над фиксированным bg-app */
+	--color-stroke: #e8e2da; /* Граница карточки, мягко отделяющая её от фона */
+	--color-stroke-light: #f3ece3; /* Внутренние разделители */
 	--shadow-card:
-		0 1px 2px rgba(15, 23, 42, 0.07), 0 12px 32px -8px rgba(15, 23, 42, 0.14);
+		0 1px 2px rgba(44, 34, 32, 0.04), 0 12px 32px -8px rgba(44, 34, 32, 0.12);
 }
 
 *,
