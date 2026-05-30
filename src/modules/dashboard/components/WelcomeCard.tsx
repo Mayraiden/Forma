@@ -4,7 +4,7 @@ import { CurrentTime } from '@/shared/ui/CurrentTime'
 import { getUserData } from '../userDataService'
 import { signOut } from '@/modules/auth/authService'
 
-const titleStyles = 'mb-2 text-3xl font-bold'
+const titleStyles = 'mb-2 text-2xl font-bold'
 const textStyles = 'text-sm font-medium tracking-tight'
 
 export async function WelcomeCard() {
@@ -19,9 +19,6 @@ export async function WelcomeCard() {
 				Осталось <strong>3 задания</strong> до повышения уровня! Поддерживай
 				серию - уже <strong>42 дня!</strong>
 			</p>
-			<form action={signOut}>
-				<button type="submit">Выйти</button>
-			</form>
 		</Card>
 	)
 }

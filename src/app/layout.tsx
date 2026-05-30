@@ -18,6 +18,23 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
 	title: 'Forma',
 	description: 'Forma - gamified personal progress tracker',
+	manifest: '/manifest.json',
+	appleWebApp: {
+		capable: true,
+		title: 'Forma',
+		statusBarStyle: 'default',
+	},
+	icons: {
+		icon: '/assets/icons/logo.svg',
+		apple: '/assets/icons/logo.svg',
+	},
+	themeColor: '#10b981',
+}
+
+export const viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	viewportFit: 'cover',
 }
 
 type RootLayoutProps = {
