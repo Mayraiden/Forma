@@ -1,0 +1,11 @@
+{
+	"name": "Forma",
+	"short_name": "Forma",
+	"description": "Gamified personal progress tracker",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#fbf9f6",
+	"theme_color": "#10b981",
+	"orientation": "portrait",
+	"icons": []
+}
