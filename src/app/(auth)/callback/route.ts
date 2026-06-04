@@ -4,9 +4,11 @@ import {
 	createRouteHandlerClient,
 	flushAuthCookies,
 } from '@/core/supabase/route-handler'
+import { getSiteOrigin } from '@/core/supabase/site-origin'
 
 export async function GET(request: NextRequest) {
-	const { searchParams, origin } = new URL(request.url)
+	const { searchParams } = new URL(request.url)
+	const origin = getSiteOrigin(request)
 	const code = searchParams.get('code')
 	let next = searchParams.get('next') ?? '/'
 
@@ -29,5 +31,6 @@ export async function GET(request: NextRequest) {
 		return response
 	}
 
-	return NextResponse.redirect(`${origin}/auth-error`)
+	const reason = encodeURIComponent(error.message)
+	return NextResponse.redirect(`${origin}/auth-error?reason=${reason}`)
 }

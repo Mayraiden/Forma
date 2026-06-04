@@ -4,9 +4,10 @@ import {
 	createRouteHandlerClient,
 	flushAuthCookies,
 } from '@/core/supabase/route-handler'
+import { getSiteOrigin } from '@/core/supabase/site-origin'
 
 export async function GET(request: NextRequest) {
-	const { origin } = new URL(request.url)
+	const origin = getSiteOrigin(request)
 	const redirectTo = `${origin}/callback?next=/`
 
 	// Один redirect-ответ: сюда пишем PKCE-cookies, потом меняем Location на URL Google

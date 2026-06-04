@@ -2,7 +2,18 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { getSupabaseAnonKey, getSupabaseUrl } from '@/core/supabase/env'
 
+const AUTH_BYPASS_PATHS = ['/callback', '/login/google']
+
 export async function middleware(request: NextRequest) {
+	const pathname = request.nextUrl.pathname
+
+	// OAuth callback: не трогаем куки (PKCE verifier), иначе exchangeCodeForSession падает
+	if (AUTH_BYPASS_PATHS.includes(pathname)) {
+		return NextResponse.next({
+			request: { headers: request.headers },
+		})
+	}
+
 	let response = NextResponse.next({
 		request: {
 			headers: request.headers,

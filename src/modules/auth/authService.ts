@@ -1,21 +1,14 @@
 'use server'
 
 import { createClient } from '@/core/supabase/server'
+import { getSiteOriginFromHeaders } from '@/core/supabase/site-origin'
 import { revalidatePath } from 'next/cache'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 async function getRequestOrigin() {
 	const headersList = await headers()
-	const origin = headersList.get('origin')
-	if (origin) return origin
-
-	const host = headersList.get('x-forwarded-host') ?? headersList.get('host')
-	const protocol = headersList.get('x-forwarded-proto') ?? 'http'
-
-	if (host) return `${protocol}://${host}`
-
-	return 'http://localhost:3000'
+	return getSiteOriginFromHeaders(headersList)
 }
 
 export async function signIn(initialState: unknown, formData: FormData) {
