@@ -1,9 +1,9 @@
 'use client'
 
 import { GoogleLogoIcon } from '@phosphor-icons/react'
-
-import { signIn, signOAuth } from '../authService'
 import { useActionState } from 'react'
+
+import { signIn } from '../authService'
 import { Button } from '@/shared/ui/Button'
 import { Field } from '@/shared/ui/Field'
 import { Divider } from '@/shared/ui/Divider'
@@ -17,18 +17,18 @@ const buttonStyles = 'w-full h-12 text-white bg-accent-orange'
 
 export function LoginForm() {
 	const [state, formAction, isPending] = useActionState(signIn, null)
-
 	return (
 		<div className={containerStyles}>
-			<form action={signOAuth.bind(null, 'google')}>
-				<Button
-					type="submit"
-					className="w-full gap-2 bg-white p-2.5 ring ring-stroke"
-				>
-					<GoogleLogoIcon size={30} weight="regular" />
-					Войти через Google
-				</Button>
-			</form>
+			<Button
+				type="button"
+				className="w-full gap-2 bg-white p-2.5 ring ring-stroke"
+				onClick={() => {
+					window.location.assign('/login/google')
+				}}
+			>
+				<GoogleLogoIcon size={30} weight="regular" />
+				Войти через Google
+			</Button>
 
 			<Divider />
 

@@ -216,6 +216,7 @@ export async function checkIn(goalId: string): Promise<GoalActionState> {
 		return { error: error.message }
 	}
 
+	revalidatePath('/')
 	revalidatePath('/goals')
 	revalidatePath(`/goals/${goalId}`)
 	return { success: true }
@@ -245,6 +246,60 @@ export async function uncheckIn(goalId: string): Promise<GoalActionState> {
 
 	if (error) return { error: error.message }
 
+	revalidatePath('/goals')
+	revalidatePath(`/goals/${goalId}`)
+	return { success: true }
+}
+
+export async function toggleLog(
+	goalId: string,
+	date: string,
+): Promise<GoalActionState> {
+	const { supabase, user } = await getAuthenticatedUser()
+	if (!user) return { error: AUTH_ERROR }
+
+	const { data: goal, error: goalError } = await supabase
+		.from('goals')
+		.select('*')
+		.eq('id', goalId)
+		.single()
+
+	if (goalError || !goal) return { error: 'Цель не найдена' }
+	if (goal.status !== 'active') return { error: 'Цель уже завершена' }
+
+	// Сервер — источник правды: дату с клиента не принимаем на веру.
+	const today = getTodayInTimezone(goal.timezone)
+	if (date > today) return { error: 'Нельзя отметить будущий день' }
+	if (!isDateInGoalRange(goal, date)) {
+		return { error: 'Этот день вне рамок цели' }
+	}
+
+	const { data: existing } = await supabase
+		.from('goal_logs')
+		.select('id')
+		.eq('goal_id', goalId)
+		.eq('user_id', user.id)
+		.eq('log_date', date)
+		.maybeSingle()
+
+	if (existing) {
+		const { error } = await supabase
+			.from('goal_logs')
+			.delete()
+			.eq('id', existing.id)
+		if (error) return { error: error.message }
+	} else {
+		const { error } = await supabase.from('goal_logs').insert({
+			goal_id: goalId,
+			user_id: user.id,
+			log_date: date,
+			value: 1,
+			completed_at: new Date().toISOString(),
+		})
+		if (error) return { error: error.message }
+	}
+
+	revalidatePath('/')
 	revalidatePath('/goals')
 	revalidatePath(`/goals/${goalId}`)
 	return { success: true }

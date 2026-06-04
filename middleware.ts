@@ -32,8 +32,17 @@ export async function middleware(request: NextRequest) {
 		},
 	)
 
-	// Важно: эта строчка обновляет протухший токен авторизации (refresh token)
-	await supabase.auth.getUser()
+	const {
+		data: { user },
+		error,
+	} = await supabase.auth.getUser()
+
+	// После signOut в куках может остаться битый refresh token — чистим без шума в логах
+	if (error?.code === 'refresh_token_not_found') {
+		await supabase.auth.signOut()
+	} else if (!user && request.cookies.getAll().some((c) => c.name.includes('auth-token'))) {
+		await supabase.auth.signOut()
+	}
 
 	return response
 }

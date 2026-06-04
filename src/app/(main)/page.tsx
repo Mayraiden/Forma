@@ -1,9 +1,11 @@
 import { LevelCard } from '@/modules/LevelCard/LevelCard'
-import { WelcomeCard } from '@/modules/dashboard/components/WelcomeCard'
+import { WeekStrip } from '@/modules/calendar/components/WeekStrip'
+import { TodayHabits } from '@/modules/dashboard/components/TodayHabits'
+import { StatsCards } from '@/modules/stats/components/StatsCards'
 
-const shellStyles = 'flex h-full w-full flex-col'
+const shellStyles = 'pt-2 flex w-full flex-col xl:h-full'
 const contentStyles =
-	'grid h-full min-h-0 w-full grid-cols-1 grid-rows-[auto_minmax(0,1fr)] gap-4 xl:grid-cols-2'
+	'grid w-full grid-cols-1 gap-4 xl:h-full xl:min-h-0 xl:grid-rows-[auto_minmax(0,1fr)] xl:grid-cols-2'
 const welcomeWrapStyles = 'space-y-4 xl:col-span-2'
 
 export default function HomePage() {
@@ -11,8 +13,10 @@ export default function HomePage() {
 		<main className={shellStyles}>
 			<div className={contentStyles}>
 				<div className={welcomeWrapStyles}>
-					{/* <WelcomeCard /> */}
 					<LevelCard />
+					<WeekStrip />
+					<StatsCards />
+					<TodayHabits />
 				</div>
 			</div>
 		</main>

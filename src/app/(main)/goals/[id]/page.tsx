@@ -3,7 +3,7 @@ import { getGoalById } from '@/modules/goals/goalsService'
 import { GoalDetail } from '@/modules/goals/components/GoalDetail'
 
 type GoalPageProps = {
-	params: Promise<{ id: string }> // Next 15+
+	params: Promise<{ id: string }>
 }
 
 export default async function GoalPage({ params }: GoalPageProps) {

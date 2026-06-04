@@ -1,18 +1,32 @@
-import { createClient } from '@/core/supabase/server'
-import { NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 
-export async function GET(request: Request) {
+import {
+	createRouteHandlerClient,
+	flushAuthCookies,
+} from '@/core/supabase/route-handler'
+
+export async function GET(request: NextRequest) {
 	const { searchParams, origin } = new URL(request.url)
 	const code = searchParams.get('code')
-	const next = searchParams.get('next') ?? '/'
+	let next = searchParams.get('next') ?? '/'
 
-	if (code) {
-		const supabase = await createClient()
-		const { error } = await supabase.auth.exchangeCodeForSession(code)
+	if (!next.startsWith('/')) {
+		next = '/'
+	}
 
-		if (!error) {
-			return NextResponse.redirect(`${origin}${next}`)
-		}
+	if (!code) {
+		return NextResponse.redirect(`${origin}/auth-error`)
+	}
+
+	const successUrl = `${origin}${next}`
+	const response = NextResponse.redirect(successUrl)
+	const supabase = createRouteHandlerClient(request, response)
+
+	const { error } = await supabase.auth.exchangeCodeForSession(code)
+	await flushAuthCookies()
+
+	if (!error) {
+		return response
 	}
 
 	return NextResponse.redirect(`${origin}/auth-error`)
